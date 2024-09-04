@@ -102,6 +102,7 @@ def main():
                 with open('trans.json', 'a') as f:
                     json.dump(batch, f, indent=4)
                 logger.debug(f'Batch {c//10} saved.')
+                batch = []
 
             logger.debug(f'Example  {c} translated.')
             c += 1
