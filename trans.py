@@ -10,7 +10,25 @@ from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponen
 import time
 from dotenv import load_dotenv
 import os
+import json
+import logging
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+ch = logging.StreamHandler()
+ch.setLevel(logging.INFO)
+
+fh = logging.FileHandler('log.txt')
+fh.setLevel(logging.INFO)
+
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+
+logger.addHandler(ch)
+logger.addHandler(fh)
 
 load_dotenv()
 
@@ -18,13 +36,11 @@ DEBUGGING = os.getenv('DEBUGGING', 'True').lower() == 'true'
 TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&tl=sn&op=translate')
 TIMEOUT = int(os.getenv('TIMEOUT', 8))
 
-
 chrome_options = Options()
 if DEBUGGING:
     chrome_options.add_experimental_option('detach', True)
 else:
     chrome_options.add_argument('--headless')
-
 
 class NoTranslationResult(Exception):
     ...
@@ -40,10 +56,10 @@ def wait_for_element(browser, by, element_id, timeout=TIMEOUT):
         element = EC.presence_of_element_located((by, element_id))
         WDW(browser, timeout).until(element)
     except TimeoutException as e:
-        print(f'Element with {by} = {element_id} not found within {timeout} seconds: {e}')
+        logger.error(f'Element with {by} = {element_id} not found within {timeout} seconds: {e}')
         return None
     except ConnectionError as e:
-        print(f'Connection error: {e}')
+        logger.error(f'Connection error: {e}')
         return None
     return browser.find_element(by, element_id)
 
@@ -68,32 +84,35 @@ def main():
     browser = webdriver.Chrome(service=service, options=chrome_options)
     browser.get(TRANSLATE_URL)
 
-    texts = [
-        'Hello World',
-        'How are you?',
-        'What is your name?',
-        'I am fine',
-        'What is the time?',
-        'Good morning',
-        'Good afternoon',
-        'Good evening',
-        'Good night',
-        'Goodbye',
-        'Thank you',
-        'Please',
-    ]
-
+    examples = json.load(open('data.json'))
+    c = 0
+    batch = []
     try:
-        for text in texts:
-            result = translate(text, browser)
-            print(f'Translation result:\n{text} >_ {result}\n\n')
+        for e in examples:
+            sh_inst = translate(e['instruction'], browser)
+            sh_cxt = translate(e['context'], browser)
+            sh_rp = translate(e['response'], browser)
+
+            e['sh_instruction'] = sh_inst
+            e['sh_context'] = sh_cxt
+            e['sh_response'] = sh_rp
+
+            batch.append(e)
+            if c % 10 == 0:
+                with open('trans.json', 'a') as f:
+                    json.dump(batch, f, indent=4)
+                logger.debug(f'Batch {c//10} saved.')
+
+            logger.debug(f'Example  {c} translated.')
+            c += 1
             time.sleep(2)
+        
     except NoTranslationResult as e:
-        print(f'Unable to retrieve translation')
+        logger.error(f'Unable to retrieve translation')
     except NoSuchElementException as e:
-        print(f'Unable to retrieve translation result element: {e}')
+        logger.error(f'Unable to retrieve translation result element: {e}')
     except WebDriverException as e:
-        print(f'General webdriver error: {e}')
+        logger.error(f'General webdriver error: {e}')
     finally:
         if not DEBUGGING:
             browser.quit()
