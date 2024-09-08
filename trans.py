@@ -12,8 +12,8 @@ import time
 from dotenv import load_dotenv
 import os
 import json
-import asyncio
 import logging
+import tqdm
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -34,7 +34,7 @@ logger.addHandler(fh)
 
 load_dotenv()
 
-DEBUGGING = os.getenv('DEBUGGING', 'True').lower() == 'true'
+DEBUGGING = os.getenv('DEBUGGING', 'False').lower() == 'true'
 TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&tl=sn&op=translate')
 TIMEOUT = int(os.getenv('TIMEOUT', 8))
 
@@ -66,7 +66,7 @@ def wait_for_element(browser, by, element_id, timeout=TIMEOUT):
     return browser.find_element(by, element_id)
 
 @sleep_and_retry
-@limits(calls=1, period=1)
+@limits(calls=1, period=5)
 def rate_limited_translate(text: str, in_browser: webdriver.Chrome) -> str:
     return translate(text, in_browser)
 
@@ -83,13 +83,13 @@ def translate(text: str, in_browser: webdriver.Chrome) -> str:
             return result.text
     return ''
 
-async def translate_item(e, browser):
-    e['sh_instruction'] = await asyncio.to_thread(rate_limited_translate, e['instruction'], browser)
-    e['sh_context'] = await asyncio.to_thread(rate_limited_translate, e['context'], browser)
-    e['sh_response'] = await asyncio.to_thread(rate_limited_translate, e['response'], browser)
+def translate_item(e, browser):
+    e['sh_instruction'] = rate_limited_translate(e['instruction'], browser)
+    e['sh_context'] = rate_limited_translate(e['context'], browser)
+    e['sh_response'] = rate_limited_translate(e['response'], browser)
     return e
 
-async def main():
+def main():
     browser_path = Path(__file__).resolve().parent / 'cd' / 'chromedriver.exe'
     service = Service(browser_path)
     browser = webdriver.Chrome(service=service, options=chrome_options)
@@ -99,7 +99,6 @@ async def main():
         with open('data.json', 'r') as f:
             data = json.load(f)
 
-        # Load checkpoint if exists
         try:
             with open('checkpoint.json', 'r') as f:
                 checkpoint = json.load(f)
@@ -107,21 +106,19 @@ async def main():
         except FileNotFoundError:
             start_index = 0
 
-        tasks = []
+        batch = []
         for i, e in enumerate(tqdm.tqdm(data[start_index:], initial=start_index, total=len(data))):
-            task = asyncio.create_task(translate_item(e, browser))
-            tasks.append(task)
-        
-            if len(tasks) >= 10 or i == len(data) - 1:
-                completed = await asyncio.gather(*tasks)
+            translated_item = translate_item(e, browser)
+            batch.append(translated_item)
+            
+            if len(batch) >= 10 or i == len(data) - 1:
                 with open('trans.json', 'a') as f:
-                    json.dump(completed, f, indent=4)
+                    json.dump(batch, f, indent=4)
                 
-                # Update checkpoint
                 with open('checkpoint.json', 'w') as f:
                     json.dump({'last_processed_index': start_index + i}, f)
 
-                tasks = []
+                batch = []
 
     except Exception as e:
         logger.error(f"An error occurred: {e}")
@@ -132,5 +129,5 @@ async def main():
 
 if __name__ == '__main__':
     logger.debug('Program started.')
-    asyncio.run(main())
+    main()
     logger.debug('Program execution complete.')
