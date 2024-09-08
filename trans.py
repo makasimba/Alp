@@ -7,10 +7,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.common.exceptions import TimeoutException, WebDriverException, NoSuchElementException
 from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
+from ratelimit import limits, sleep_and_retry 
 import time
 from dotenv import load_dotenv
 import os
 import json
+import asyncio
 import logging
 
 logger = logging.getLogger(__name__)
@@ -63,6 +65,11 @@ def wait_for_element(browser, by, element_id, timeout=TIMEOUT):
         return None
     return browser.find_element(by, element_id)
 
+@sleep_and_retry
+@limits(calls=1, period=1)
+def rate_limited_translate(text: str, in_browser: webdriver.Chrome) -> str:
+    return translate(text, in_browser)
+
 def translate(text: str, in_browser: webdriver.Chrome) -> str:
     text_area = wait_for_element(in_browser, By.CSS_SELECTOR, 'textarea[aria-label="Source text"]')
 
@@ -76,47 +83,54 @@ def translate(text: str, in_browser: webdriver.Chrome) -> str:
             return result.text
     return ''
 
-def main():
-    browser_path =  Path(__file__).resolve().parent / 'cd' / 'chromedriver.exe'
+async def translate_item(e, browser):
+    e['sh_instruction'] = await asyncio.to_thread(rate_limited_translate, e['instruction'], browser)
+    e['sh_context'] = await asyncio.to_thread(rate_limited_translate, e['context'], browser)
+    e['sh_response'] = await asyncio.to_thread(rate_limited_translate, e['response'], browser)
+    return e
 
+async def main():
+    browser_path = Path(__file__).resolve().parent / 'cd' / 'chromedriver.exe'
     service = Service(browser_path)
-
     browser = webdriver.Chrome(service=service, options=chrome_options)
     browser.get(TRANSLATE_URL)
 
-    examples = json.load(open('data.json'))
-    c = 0
-    batch = []
     try:
-        for e in examples:
-            sh_inst = translate(e['instruction'], browser)
-            sh_cxt = translate(e['context'], browser)
-            sh_rp = translate(e['response'], browser)
+        with open('data.json', 'r') as f:
+            data = json.load(f)
 
-            e['sh_instruction'] = sh_inst
-            e['sh_context'] = sh_cxt
-            e['sh_response'] = sh_rp
+        # Load checkpoint if exists
+        try:
+            with open('checkpoint.json', 'r') as f:
+                checkpoint = json.load(f)
+                start_index = checkpoint['last_processed_index'] + 1
+        except FileNotFoundError:
+            start_index = 0
 
-            batch.append(e)
-            if c % 10 == 0:
-                with open('trans.json', 'a') as f:
-                    json.dump(batch, f, indent=4)
-                logger.debug(f'Batch {c//10} saved.')
-                batch = []
-
-            logger.debug(f'Example  {c} translated.')
-            c += 1
-            time.sleep(2)
+        tasks = []
+        for i, e in enumerate(tqdm.tqdm(data[start_index:], initial=start_index, total=len(data))):
+            task = asyncio.create_task(translate_item(e, browser))
+            tasks.append(task)
         
-    except NoTranslationResult as e:
-        logger.error(f'Unable to retrieve translation')
-    except NoSuchElementException as e:
-        logger.error(f'Unable to retrieve translation result element: {e}')
-    except WebDriverException as e:
-        logger.error(f'General webdriver error: {e}')
+            if len(tasks) >= 10 or i == len(data) - 1:
+                completed = await asyncio.gather(*tasks)
+                with open('trans.json', 'a') as f:
+                    json.dump(completed, f, indent=4)
+                
+                # Update checkpoint
+                with open('checkpoint.json', 'w') as f:
+                    json.dump({'last_processed_index': start_index + i}, f)
+
+                tasks = []
+
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
     finally:
         if not DEBUGGING:
             browser.quit()
+            logger.info('Browser quit.')
 
 if __name__ == '__main__':
-    main()
+    logger.debug('Program started.')
+    asyncio.run(main())
+    logger.debug('Program execution complete.')
