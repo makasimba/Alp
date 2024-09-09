@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.common.exceptions import TimeoutException, WebDriverException, NoSuchElementException
-from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
+from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential, wait_random_exponential
 from ratelimit import limits, sleep_and_retry 
 import time
 from dotenv import load_dotenv
@@ -14,6 +14,7 @@ import os
 import json
 import logging
 import tqdm
+import random
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -34,7 +35,7 @@ logger.addHandler(fh)
 
 load_dotenv()
 
-DEBUGGING = os.getenv('DEBUGGING', 'False').lower() == 'true'
+DEBUGGING = os.getenv('DEBUGGING', 'True').lower() == 'true'
 TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&tl=sn&op=translate')
 TIMEOUT = int(os.getenv('TIMEOUT', 8))
 
@@ -49,11 +50,12 @@ class NoTranslationResult(Exception):
 
 
 @retry(
-        retry=retry_if_exception((TimeoutException, ConnectionError)),
-        stop=stop_after_attempt(5),
-        wait=wait_exponential(multiplier=1, min=4, max=60)
+        retry=retry_if_exception((TimeoutException, ConnectionError, WebDriverException)),
+        stop=stop_after_attempt(7),
+        wait=wait_random_exponential(multiplier=1, min=3, max=60),
+        before_sleep=lambda retry_state: time.sleep(random.uniform(1, 5))
 )
-def wait_for_element(browser, by, element_id, timeout=TIMEOUT):
+def wait_for_element(browser, by, element_id, timeout=5):
     try:
         element = EC.presence_of_element_located((by, element_id))
         WDW(browser, timeout).until(element)
@@ -66,19 +68,20 @@ def wait_for_element(browser, by, element_id, timeout=TIMEOUT):
     return browser.find_element(by, element_id)
 
 @sleep_and_retry
-@limits(calls=1, period=5)
+@limits(calls=1, period=random.uniform(2, 4))
 def rate_limited_translate(text: str, in_browser: webdriver.Chrome) -> str:
     return translate(text, in_browser)
 
 def translate(text: str, in_browser: webdriver.Chrome) -> str:
-    text_area = wait_for_element(in_browser, By.CSS_SELECTOR, 'textarea[aria-label="Source text"]')
+    text_area = wait_for_element(in_browser, By.CSS_SELECTOR, 'textarea[aria-label="Source text"]', timeout=random.uniform(2, 5))
 
     if text_area:
         text_area.clear()
         text_area.send_keys(text)
-        time.sleep(5)
 
-        result = wait_for_element(in_browser, By.CSS_SELECTOR, 'span.ryNqvb')
+        result = wait_for_element(in_browser, By.CSS_SELECTOR, 'span.ryNqvb', timeout=random.uniform(2, 5))
+        time.sleep(random.uniform(2, 3))
+        
         if result and result.text:
             return result.text
     return ''
