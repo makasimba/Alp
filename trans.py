@@ -40,6 +40,14 @@ TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&
 TIMEOUT = int(os.getenv('TIMEOUT', 8))
 
 chrome_options = Options()
+
+custom_options = webdriver.ChromeOptions()
+prefs = {
+  "translate_whitelists": {"en":"sn"},
+  "translate":{"enabled":"true"}
+}
+chrome_options.add_experimental_option("prefs", prefs)
+
 if DEBUGGING:
     chrome_options.add_experimental_option('detach', True)
 else:
