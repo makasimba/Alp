@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.common.exceptions import TimeoutException, WebDriverException, NoSuchElementException
-from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential, wait_random_exponential
+from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential, wait_random_exponential, wait_random
 from ratelimit import limits, sleep_and_retry 
 import time
 from dotenv import load_dotenv
@@ -15,6 +15,7 @@ import json
 import logging
 import tqdm
 import random
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -34,20 +35,14 @@ logger.addHandler(ch)
 logger.addHandler(fh)
 
 load_dotenv()
-
+BATCH_SIZE = os.getenv('BATCH_SIZE')
+NUMBER_OF_ITEMS = os.getenv('NUMBER_OF_ITEMS')
+FILENAME = os.getenv('FILENAME')
 DEBUGGING = os.getenv('DEBUGGING', 'True').lower() == 'true'
 TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&tl=sn&op=translate')
-TIMEOUT = int(os.getenv('TIMEOUT', 8))
+TIMEOUT = int(os.getenv('TIMEOUT', 3))
 
 chrome_options = Options()
-
-custom_options = webdriver.ChromeOptions()
-prefs = {
-  "translate_whitelists": {"en":"sn"},
-  "translate":{"enabled":"true"}
-}
-chrome_options.add_experimental_option("prefs", prefs)
-
 if DEBUGGING:
     chrome_options.add_experimental_option('detach', True)
 else:
@@ -59,25 +54,33 @@ class NoTranslationResult(Exception):
 
 @retry(
         retry=retry_if_exception((TimeoutException, ConnectionError, WebDriverException)),
-        stop=stop_after_attempt(7),
-        wait=wait_random_exponential(multiplier=1, min=3, max=60),
-        before_sleep=lambda retry_state: time.sleep(random.uniform(1, 5))
+        stop=stop_after_attempt(5),
+        wait=wait_random_exponential(multiplier=1, min=3, max=10) + wait_random(0, 2),
+        before_sleep=lambda retry_state: logger.warning(f'Retrying in {retry_state.next_action.sleep} seconds')
 )
-def wait_for_element(browser, by, element_id, timeout=5):
+def wait_for_element(browser, by, element_id, timeout=5, check_visibility=False):
     try:
-        element = EC.presence_of_element_located((by, element_id))
+        condition = EC.visibility_of_element_located if check_visibility else EC.presence_of_element_located
+        element = condition((by, element_id))
         WDW(browser, timeout).until(element)
-    except TimeoutException as e:
-        logger.error(f'Element with {by} = {element_id} not found within {timeout} seconds: {e}')
-        return None
-    except ConnectionError as e:
-        logger.error(f'Connection error: {e}')
-        return None
-    return browser.find_element(by, element_id)
+        return browser.find_element(by, element_id)
+    except (ConnectionError, TimeoutException, WebDriverException) as e:
+        logger.error(f'Error encountered: {e}')
+        return False
 
 @sleep_and_retry
-@limits(calls=1, period=random.uniform(2, 4))
-def rate_limited_translate(text: str, in_browser: webdriver.Chrome) -> str:
+@limits(calls=1, period=random.uniform(2, 5))
+def rate_limited_translate(text: str, in_browser: webdriver.Chrome, max_retries: int=3) -> str:
+    for attempt in range(max_retries):
+        try:
+            result = translate(text, in_browser)
+            logger.debug(f'Translation successful on attempt {attempt + 1}')
+            return result
+        except Exception as e:
+            logger.warning (f"Translation failed on attempt {attempt + 1}: {e}")
+            if attempt == max_retries-1:
+                logger.error(f"All {max_retries} translation attempt failed")
+                raise
     return translate(text, in_browser)
 
 def translate(text: str, in_browser: webdriver.Chrome) -> str:
@@ -88,57 +91,86 @@ def translate(text: str, in_browser: webdriver.Chrome) -> str:
         text_area.send_keys(text)
 
         result = wait_for_element(in_browser, By.CSS_SELECTOR, 'span.ryNqvb', timeout=random.uniform(2, 5))
-        time.sleep(random.uniform(2, 3))
+        time.sleep(random.uniform(2, 5))
         
         if result and result.text:
             return result.text
     return ''
 
+def chunk(text: str, max_length: int = 5_000):
+    chunks = []
+    current_chunk = ""
+    for sentence in text.split(". "):
+        if len(current_chunk) + len(sentence) < max_length-1:
+            current_chunk += sentence + ". "
+        else:
+            chunks.append(current_chunk.strip())
+            current_chunk = sentence + ". "
+    
+    if current_chunk:
+        chunks.append(current_chunk.strip())
+    return chunks
+
+def translate_chunked(text: str, browser):
+    if len(text) <= 5_000:
+        return rate_limited_translate(text, browser)
+    else:
+        translated_chunks = [rate_limited_translate(chunk, browser) for chunk in chunk(text)]
+        return " ". join(translated_chunks)
+
 def translate_item(e, browser):
-    e['sh_instruction'] = rate_limited_translate(e['instruction'], browser)
-    e['sh_context'] = rate_limited_translate(e['context'], browser)
-    e['sh_response'] = rate_limited_translate(e['response'], browser)
+    e['sh_instruction'] = translate_chunked(e['instruction'], browser)
+    e['sh_context'] = translate_chunked(e['context'], browser)
+    e['sh_response'] = translate_chunked(e['response'], browser)
     return e
 
-def main():
+def save_data(batch, n):
+    if len(batch) == BATCH_SIZE or n == NUMBER_OF_ITEMS:
+        try:
+            with open('data.json', 'r') as f:
+                existing_data = json.load(f)
+        except FileNotFoundError:
+            existing_data = []
+        existing_data.extend(batch)
+
+        with open('data.json', 'w') as f:
+            json.dump(existing_data, f, indent=4)
+        
+        batch = []
+    return batch
+
+def load_checkpoint():
+    try:
+        with open('checkpoint.json', 'r') as f:
+            return json.load(f)['last_checkpoint']
+    except FileNotFoundError:
+        return 0
+
+def translate_data_in(browser):
+    ckpt = load_checkpoint()
+    batch = []
+    for n, line in enumerate(open(FILENAME, 'r'), ckpt):
+        batch.append(translate_item(json.loads(line), browser))
+        batch = save_data(batch, n)
+
+def initialize():
+    logger.debug('Initializing browser')
     browser_path = Path(__file__).resolve().parent / 'cd' / 'chromedriver.exe'
     service = Service(browser_path)
     browser = webdriver.Chrome(service=service, options=chrome_options)
     browser.get(TRANSLATE_URL)
+    return browser
 
+def main():
+    browser = initialize()
     try:
-        with open('data.json', 'r') as f:
-            data = json.load(f)
-
-        try:
-            with open('checkpoint.json', 'r') as f:
-                checkpoint = json.load(f)
-                start_index = checkpoint['last_processed_index'] + 1
-        except FileNotFoundError:
-            start_index = 0
-
-        batch = []
-        for i, e in enumerate(tqdm.tqdm(data[start_index:], initial=start_index, total=len(data))):
-            translated_item = translate_item(e, browser)
-            batch.append(translated_item)
-            
-            if len(batch) >= 10 or i == len(data) - 1:
-                with open('trans.json', 'a') as f:
-                    json.dump(batch, f, indent=4)
-                
-                with open('checkpoint.json', 'w') as f:
-                    json.dump({'last_processed_index': start_index + i}, f)
-
-                batch = []
-
+        translate_data_in(browser)
     except Exception as e:
         logger.error(f"An error occurred: {e}")
-    finally:
-        if not DEBUGGING:
-            browser.quit()
-            logger.info('Browser quit.')
+
 
 if __name__ == '__main__':
     logger.debug('Program started.')
     main()
     logger.debug('Program execution complete.')
+

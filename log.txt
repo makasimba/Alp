@@ -1,3 +1,55 @@
 2024-09-08 15:57:27,449 - __main__ - ERROR - An error occurred: 'tuple' object is not callable
 2024-09-08 16:02:59,323 - __main__ - ERROR - An error occurred: 'tuple' object is not callable
 2024-09-08 16:18:02,021 - __main__ - ERROR - An error occurred: 'tuple' object is not callable
+2024-10-02 15:07:32,542 - __main__ - ERROR - Element with css selector = span.ryNqvb not found within 2.7393788336572364 seconds: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00007FF6D6EAB645+29573]
+	(No symbol) [0x00007FF6D6E20470]
+	(No symbol) [0x00007FF6D6CDB6EA]
+	(No symbol) [0x00007FF6D6D2F815]
+	(No symbol) [0x00007FF6D6D2FA6C]
+	(No symbol) [0x00007FF6D6D7B917]
+	(No symbol) [0x00007FF6D6D5733F]
+	(No symbol) [0x00007FF6D6D786BC]
+	(No symbol) [0x00007FF6D6D570A3]
+	(No symbol) [0x00007FF6D6D212DF]
+	(No symbol) [0x00007FF6D6D22441]
+	GetHandleVerifier [0x00007FF6D71DC58D+3375821]
+	GetHandleVerifier [0x00007FF6D7227987+3684039]
+	GetHandleVerifier [0x00007FF6D721CDAB+3640043]
+	GetHandleVerifier [0x00007FF6D6F6B7C6+816390]
+	(No symbol) [0x00007FF6D6E2B77F]
+	(No symbol) [0x00007FF6D6E275A4]
+	(No symbol) [0x00007FF6D6E27740]
+	(No symbol) [0x00007FF6D6E1659F]
+	BaseThreadInitThunk [0x00007FFCEA15257D+29]
+	RtlUserThreadStart [0x00007FFCEAACAF28+40]
+
+2024-10-02 15:07:38,933 - __main__ - ERROR - An error occurred: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=129.0.6668.60); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6D6EAB645+29573]
+	(No symbol) [0x00007FF6D6E20470]
+	(No symbol) [0x00007FF6D6CDB6EA]
+	(No symbol) [0x00007FF6D6CE22BE]
+	(No symbol) [0x00007FF6D6CE4637]
+	(No symbol) [0x00007FF6D6CE46F0]
+	(No symbol) [0x00007FF6D6D2959B]
+	(No symbol) [0x00007FF6D6D572FA]
+	(No symbol) [0x00007FF6D6D22FF6]
+	(No symbol) [0x00007FF6D6D57510]
+	(No symbol) [0x00007FF6D6D786BC]
+	(No symbol) [0x00007FF6D6D570A3]
+	(No symbol) [0x00007FF6D6D212DF]
+	(No symbol) [0x00007FF6D6D22441]
+	GetHandleVerifier [0x00007FF6D71DC58D+3375821]
+	GetHandleVerifier [0x00007FF6D7227987+3684039]
+	GetHandleVerifier [0x00007FF6D721CDAB+3640043]
+	GetHandleVerifier [0x00007FF6D6F6B7C6+816390]
+	(No symbol) [0x00007FF6D6E2B77F]
+	(No symbol) [0x00007FF6D6E275A4]
+	(No symbol) [0x00007FF6D6E27740]
+	(No symbol) [0x00007FF6D6E1659F]
+	BaseThreadInitThunk [0x00007FFCEA15257D+29]
+	RtlUserThreadStart [0x00007FFCEAACAF28+40]
+
