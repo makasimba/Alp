@@ -1,0 +1,6 @@
+selenium
+tenacity
+ratelimit
+python-dotenv
+boto3
+tqdm
