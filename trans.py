@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.common.exceptions import TimeoutException, WebDriverException, NoSuchElementException
 from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential, wait_random_exponential, wait_random
 from ratelimit import limits, sleep_and_retry 
+from botocore.exceptions import ClientError
 import time
 from dotenv import load_dotenv
 import os
@@ -15,6 +16,7 @@ import json
 import logging
 import tqdm
 import random
+import boto3
 
 
 logger = logging.getLogger(__name__)
@@ -41,6 +43,10 @@ FILENAME = os.getenv('FILENAME')
 DEBUGGING = os.getenv('DEBUGGING', 'True') == 'True'
 TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&tl=sn&op=translate')
 TIMEOUT = int(os.getenv('TIMEOUT', 3))
+REGION=os.getenv('REGION')
+BUCKET=os.getenv('BUCKET')
+
+s3_client = boto3.client('s3', region_name=REGION)
 
 chrome_options = Options()
 if DEBUGGING:
@@ -53,6 +59,12 @@ else:
 class NoTranslationResult(Exception):
     ...
 
+def upload_to_bucket(data, bucket, key):
+    try:
+        s3_client.put_object(Body=data, Bucket=bucket, Key=key)
+        logger.info(f'Successfully uploaded {key} to {bucket}')
+    except ClientError as e:
+        logger.error(f'Error uploading {key} to {bucket}: {e}')
 
 @retry(
         retry=retry_if_exception((TimeoutException, ConnectionError, WebDriverException)),
@@ -128,6 +140,8 @@ def translate_item(e, browser):
 
 def save_data(batch, n):
     if len(batch) == int(BATCH_SIZE) or n == int(NUMBER_OF_ITEMS):
+        key = f'DATA/{n: 07}.json'
+        upload_to_bucket(batch, BUCKET, key)
         try:
             with open('data.json', 'r') as f:
                 existing_data = json.load(f)
