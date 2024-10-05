@@ -35,17 +35,19 @@ logger.addHandler(ch)
 logger.addHandler(fh)
 
 load_dotenv()
-BATCH_SIZE = os.getenv('BATCH_SIZE')
-NUMBER_OF_ITEMS = os.getenv('NUMBER_OF_ITEMS')
+BATCH_SIZE = int(os.getenv('BATCH_SIZE'))
+NUMBER_OF_ITEMS = int(os.getenv('NUMBER_OF_ITEMS'))
 FILENAME = os.getenv('FILENAME')
-DEBUGGING = os.getenv('DEBUGGING', 'True').lower() == 'true'
+DEBUGGING = os.getenv('DEBUGGING', 'True') == 'True'
 TRANSLATE_URL = os.getenv('TRANSLATE_URL', 'https://translate.google.com/?sl=en&tl=sn&op=translate')
 TIMEOUT = int(os.getenv('TIMEOUT', 3))
 
 chrome_options = Options()
 if DEBUGGING:
+    logger.info(f'Running in debug mode')
     chrome_options.add_experimental_option('detach', True)
 else:
+    logger.info(f'Running in --headless mode')
     chrome_options.add_argument('--headless')
 
 class NoTranslationResult(Exception):
@@ -84,18 +86,17 @@ def rate_limited_translate(text: str, in_browser: webdriver.Chrome, max_retries:
     return translate(text, in_browser)
 
 def translate(text: str, in_browser: webdriver.Chrome) -> str:
-    text_area = wait_for_element(in_browser, By.CSS_SELECTOR, 'textarea[aria-label="Source text"]', timeout=random.uniform(2, 5))
-
+    time.sleep(random.uniform(5, 8))
+    text_area = wait_for_element(in_browser, By.CSS_SELECTOR, 'textarea.er8xn', timeout=random.uniform(1, 10))
     if text_area:
         text_area.clear()
         text_area.send_keys(text)
 
-        result = wait_for_element(in_browser, By.CSS_SELECTOR, 'span.ryNqvb', timeout=random.uniform(2, 5))
-        time.sleep(random.uniform(2, 5))
-        
+        time.sleep(random.uniform(5, 8))
+        result = wait_for_element(in_browser, By.CSS_SELECTOR, 'span.ryNqvb', timeout=random.uniform(1, 10))
         if result and result.text:
             return result.text
-    return ''
+    return 'Text area not found'
 
 def chunk(text: str, max_length: int = 5_000):
     chunks = []
@@ -112,9 +113,10 @@ def chunk(text: str, max_length: int = 5_000):
     return chunks
 
 def translate_chunked(text: str, browser):
-    if len(text) <= 5_000:
+    if len(text) < 5_000:
         return rate_limited_translate(text, browser)
     else:
+        logger.info(f'Text, {len(text)} too long. Chunking...')
         translated_chunks = [rate_limited_translate(chunk, browser) for chunk in chunk(text)]
         return " ". join(translated_chunks)
 
@@ -125,7 +127,7 @@ def translate_item(e, browser):
     return e
 
 def save_data(batch, n):
-    if len(batch) == BATCH_SIZE or n == NUMBER_OF_ITEMS:
+    if len(batch) == int(BATCH_SIZE) or n == int(NUMBER_OF_ITEMS):
         try:
             with open('data.json', 'r') as f:
                 existing_data = json.load(f)
@@ -150,7 +152,9 @@ def translate_data_in(browser):
     ckpt = load_checkpoint()
     batch = []
     for n, line in enumerate(open(FILENAME, 'r'), ckpt):
+        logger.info(f'Translating item: {n}')
         batch.append(translate_item(json.loads(line), browser))
+        logger.info(f'Translating item: {n}. Complete')
         batch = save_data(batch, n)
 
 def initialize():
@@ -159,6 +163,7 @@ def initialize():
     service = Service(browser_path)
     browser = webdriver.Chrome(service=service, options=chrome_options)
     browser.get(TRANSLATE_URL)
+    time.sleep(random.uniform(5, 10))
     return browser
 
 def main():
@@ -166,11 +171,10 @@ def main():
     try:
         translate_data_in(browser)
     except Exception as e:
-        logger.error(f"An error occurred: {e}")
+        logger.error(f'An error occurred: {e}')
 
 
 if __name__ == '__main__':
-    logger.debug('Program started.')
+    logger.debug('Dolly15K translation has commenenced.')
     main()
-    logger.debug('Program execution complete.')
-
+    logger.debug('Dolly15K translation is complete.')

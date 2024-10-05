@@ -1,55 +1,235 @@
-2024-09-08 15:57:27,449 - __main__ - ERROR - An error occurred: 'tuple' object is not callable
-2024-09-08 16:02:59,323 - __main__ - ERROR - An error occurred: 'tuple' object is not callable
-2024-09-08 16:18:02,021 - __main__ - ERROR - An error occurred: 'tuple' object is not callable
-2024-10-02 15:07:32,542 - __main__ - ERROR - Element with css selector = span.ryNqvb not found within 2.7393788336572364 seconds: Message: 
+2024-10-05 09:42:06,128 - __main__ - INFO - Translating item: 0
+2024-10-05 09:42:29,888 - __main__ - INFO - Translating item: 0. Complete
+2024-10-05 09:42:29,888 - __main__ - INFO - Translating item: 1
+2024-10-05 09:42:53,269 - __main__ - INFO - Translating item: 1. Complete
+2024-10-05 09:42:53,271 - __main__ - INFO - Translating item: 2
+2024-10-05 09:43:14,666 - __main__ - INFO - Translating item: 2. Complete
+2024-10-05 09:43:14,666 - __main__ - INFO - Translating item: 3
+2024-10-05 09:43:37,644 - __main__ - INFO - Translating item: 3. Complete
+2024-10-05 09:43:37,645 - __main__ - INFO - Translating item: 4
+2024-10-05 09:44:05,122 - __main__ - INFO - Translating item: 4. Complete
+2024-10-05 09:44:05,122 - __main__ - INFO - Translating item: 5
+2024-10-05 09:44:32,542 - __main__ - INFO - Translating item: 5. Complete
+2024-10-05 09:44:32,543 - __main__ - INFO - Translating item: 6
+2024-10-05 09:44:56,233 - __main__ - INFO - Translating item: 6. Complete
+2024-10-05 09:44:56,234 - __main__ - INFO - Translating item: 7
+2024-10-05 09:45:21,458 - __main__ - INFO - Translating item: 7. Complete
+2024-10-05 09:45:21,459 - __main__ - INFO - Translating item: 8
+2024-10-05 09:45:46,062 - __main__ - INFO - Translating item: 8. Complete
+2024-10-05 09:45:46,062 - __main__ - INFO - Translating item: 9
+2024-10-05 09:46:13,634 - __main__ - INFO - Translating item: 9. Complete
+2024-10-05 09:46:13,634 - __main__ - INFO - Translating item: 10
+2024-10-05 09:46:35,179 - __main__ - INFO - Text, 5671 too long. Chunking...
+2024-10-05 09:47:09,401 - __main__ - INFO - Translating item: 10. Complete
+2024-10-05 09:47:09,403 - __main__ - INFO - Translating item: 11
+2024-10-05 09:47:37,397 - __main__ - INFO - Translating item: 11. Complete
+2024-10-05 09:47:37,398 - __main__ - INFO - Translating item: 12
+2024-10-05 09:48:05,866 - __main__ - INFO - Translating item: 12. Complete
+2024-10-05 09:48:05,866 - __main__ - INFO - Translating item: 13
+2024-10-05 09:48:28,969 - __main__ - INFO - Translating item: 13. Complete
+2024-10-05 09:48:28,969 - __main__ - INFO - Translating item: 14
+2024-10-05 09:48:49,569 - __main__ - INFO - Translating item: 14. Complete
+2024-10-05 09:48:49,571 - __main__ - INFO - Translating item: 15
+2024-10-05 09:49:11,776 - __main__ - INFO - Translating item: 15. Complete
+2024-10-05 09:49:11,777 - __main__ - INFO - Translating item: 16
+2024-10-05 09:49:38,465 - __main__ - INFO - Translating item: 16. Complete
+2024-10-05 09:49:38,465 - __main__ - INFO - Translating item: 17
+2024-10-05 09:50:01,818 - __main__ - INFO - Translating item: 17. Complete
+2024-10-05 09:50:01,819 - __main__ - INFO - Translating item: 18
+2024-10-05 09:50:31,729 - __main__ - INFO - Translating item: 18. Complete
+2024-10-05 09:50:31,729 - __main__ - INFO - Translating item: 19
+2024-10-05 09:50:57,572 - __main__ - INFO - Translating item: 19. Complete
+2024-10-05 09:50:57,572 - __main__ - INFO - Translating item: 20
+2024-10-05 09:51:25,638 - __main__ - INFO - Translating item: 20. Complete
+2024-10-05 09:51:25,639 - __main__ - INFO - Translating item: 21
+2024-10-05 09:51:46,749 - __main__ - INFO - Translating item: 21. Complete
+2024-10-05 09:51:46,749 - __main__ - INFO - Translating item: 22
+2024-10-05 09:52:12,233 - __main__ - INFO - Translating item: 22. Complete
+2024-10-05 09:52:12,234 - __main__ - INFO - Translating item: 23
+2024-10-05 09:52:38,568 - __main__ - INFO - Translating item: 23. Complete
+2024-10-05 09:52:38,568 - __main__ - INFO - Translating item: 24
+2024-10-05 09:53:05,538 - __main__ - INFO - Translating item: 24. Complete
+2024-10-05 09:53:05,539 - __main__ - INFO - Translating item: 25
+2024-10-05 09:54:01,099 - __main__ - INFO - Translating item: 25. Complete
+2024-10-05 09:54:01,099 - __main__ - INFO - Translating item: 26
+2024-10-05 09:54:25,932 - __main__ - INFO - Translating item: 26. Complete
+2024-10-05 09:54:25,933 - __main__ - INFO - Translating item: 27
+2024-10-05 09:54:51,185 - __main__ - INFO - Translating item: 27. Complete
+2024-10-05 09:54:51,186 - __main__ - INFO - Translating item: 28
+2024-10-05 10:14:11,135 - __main__ - INFO - Translating item: 0
+2024-10-05 10:14:25,981 - __main__ - INFO - Translating item: 0. Complete
+2024-10-05 10:14:25,981 - __main__ - INFO - Translating item: 1
+2024-10-05 10:14:38,406 - __main__ - INFO - Translating item: 1. Complete
+2024-10-05 10:14:38,407 - __main__ - INFO - Translating item: 2
+2024-10-05 10:14:49,624 - __main__ - INFO - Translating item: 2. Complete
+2024-10-05 10:14:49,625 - __main__ - INFO - Translating item: 3
+2024-10-05 10:15:01,879 - __main__ - INFO - Translating item: 3. Complete
+2024-10-05 10:15:01,879 - __main__ - INFO - Translating item: 4
+2024-10-05 10:15:16,436 - __main__ - INFO - Translating item: 4. Complete
+2024-10-05 10:15:16,437 - __main__ - INFO - Translating item: 5
+2024-10-05 10:15:32,558 - __main__ - INFO - Translating item: 5. Complete
+2024-10-05 10:15:32,558 - __main__ - INFO - Translating item: 6
+2024-10-05 10:15:45,648 - __main__ - INFO - Translating item: 6. Complete
+2024-10-05 10:15:45,649 - __main__ - INFO - Translating item: 7
+2024-10-05 10:15:57,987 - __main__ - INFO - Translating item: 7. Complete
+2024-10-05 10:15:57,987 - __main__ - INFO - Translating item: 8
+2024-10-05 10:16:11,665 - __main__ - INFO - Translating item: 8. Complete
+2024-10-05 10:16:11,665 - __main__ - INFO - Translating item: 9
+2024-10-05 10:16:30,065 - __main__ - INFO - Translating item: 9. Complete
+2024-10-05 10:16:30,068 - __main__ - INFO - Translating item: 10
+2024-10-05 10:16:38,703 - __main__ - INFO - Text, 5671 too long. Chunking...
+2024-10-05 10:17:06,183 - __main__ - INFO - Translating item: 10. Complete
+2024-10-05 10:17:06,183 - __main__ - INFO - Translating item: 11
+2024-10-05 10:17:22,017 - __main__ - INFO - Translating item: 11. Complete
+2024-10-05 10:17:22,017 - __main__ - INFO - Translating item: 12
+2024-10-05 10:17:39,044 - __main__ - INFO - Translating item: 12. Complete
+2024-10-05 10:17:39,044 - __main__ - INFO - Translating item: 13
+2024-10-05 10:17:53,085 - __main__ - INFO - Translating item: 13. Complete
+2024-10-05 10:17:53,085 - __main__ - INFO - Translating item: 14
+2024-10-05 10:18:06,626 - __main__ - INFO - Translating item: 14. Complete
+2024-10-05 10:18:06,627 - __main__ - INFO - Translating item: 15
+2024-10-05 10:18:19,533 - __main__ - INFO - Translating item: 15. Complete
+2024-10-05 10:18:19,534 - __main__ - INFO - Translating item: 16
+2024-10-05 10:18:37,444 - __main__ - INFO - Translating item: 16. Complete
+2024-10-05 10:18:37,445 - __main__ - INFO - Translating item: 17
+2024-10-05 10:18:52,435 - __main__ - INFO - Translating item: 17. Complete
+2024-10-05 10:18:52,436 - __main__ - INFO - Translating item: 18
+2024-10-05 10:19:07,865 - __main__ - INFO - Translating item: 18. Complete
+2024-10-05 10:19:07,866 - __main__ - INFO - Translating item: 19
+2024-10-05 10:30:47,408 - __main__ - INFO - Translating item: 0
+2024-10-05 10:31:00,092 - __main__ - INFO - Translating item: 0. Complete
+2024-10-05 10:31:00,092 - __main__ - INFO - Translating item: 1
+2024-10-05 10:31:10,059 - __main__ - INFO - Translating item: 1. Complete
+2024-10-05 10:31:10,059 - __main__ - INFO - Translating item: 2
+2024-10-05 10:31:20,729 - __main__ - INFO - Translating item: 2. Complete
+2024-10-05 10:31:20,730 - __main__ - INFO - Translating item: 3
+2024-10-05 10:31:31,564 - __main__ - INFO - Translating item: 3. Complete
+2024-10-05 10:31:31,565 - __main__ - INFO - Translating item: 4
+2024-10-05 10:31:43,828 - __main__ - INFO - Translating item: 4. Complete
+2024-10-05 10:31:43,829 - __main__ - INFO - Translating item: 5
+2024-10-05 10:31:55,600 - __main__ - INFO - Translating item: 5. Complete
+2024-10-05 10:31:55,601 - __main__ - INFO - Translating item: 6
+2024-10-05 10:32:07,039 - __main__ - INFO - Translating item: 6. Complete
+2024-10-05 10:32:07,039 - __main__ - INFO - Translating item: 7
+2024-10-05 10:32:17,399 - __main__ - INFO - Translating item: 7. Complete
+2024-10-05 10:32:17,399 - __main__ - INFO - Translating item: 8
+2024-10-05 10:32:28,342 - __main__ - INFO - Translating item: 8. Complete
+2024-10-05 10:32:28,342 - __main__ - INFO - Translating item: 9
+2024-10-05 10:32:44,110 - __main__ - INFO - Translating item: 9. Complete
+2024-10-05 10:32:44,113 - __main__ - INFO - Translating item: 10
+2024-10-05 10:32:51,794 - __main__ - INFO - Text, 5671 too long. Chunking...
+2024-10-05 10:43:28,725 - __main__ - INFO - Translating item: 0
+2024-10-05 10:43:52,311 - __main__ - INFO - Translating item: 0. Complete
+2024-10-05 10:43:52,311 - __main__ - INFO - Translating item: 1
+2024-10-05 10:44:14,408 - __main__ - INFO - Translating item: 1. Complete
+2024-10-05 10:44:14,409 - __main__ - INFO - Translating item: 2
+2024-10-05 10:44:33,511 - __main__ - INFO - Translating item: 2. Complete
+2024-10-05 10:44:33,514 - __main__ - INFO - Translating item: 3
+2024-10-05 10:44:53,501 - __main__ - INFO - Translating item: 3. Complete
+2024-10-05 10:44:53,501 - __main__ - INFO - Translating item: 4
+2024-10-05 10:45:15,431 - __main__ - INFO - Translating item: 4. Complete
+2024-10-05 10:45:15,431 - __main__ - INFO - Translating item: 5
+2024-10-05 10:45:36,021 - __main__ - INFO - Translating item: 5. Complete
+2024-10-05 10:45:36,021 - __main__ - INFO - Translating item: 6
+2024-10-05 10:45:57,562 - __main__ - INFO - Translating item: 6. Complete
+2024-10-05 10:45:57,563 - __main__ - INFO - Translating item: 7
+2024-10-05 10:46:17,391 - __main__ - INFO - Translating item: 7. Complete
+2024-10-05 10:46:17,391 - __main__ - INFO - Translating item: 8
+2024-10-05 10:46:35,534 - __main__ - INFO - Translating item: 8. Complete
+2024-10-05 10:46:35,534 - __main__ - INFO - Translating item: 9
+2024-10-05 10:47:01,041 - __main__ - INFO - Translating item: 9. Complete
+2024-10-05 10:47:01,041 - __main__ - INFO - Translating item: 10
+2024-10-05 10:47:14,331 - __main__ - INFO - Text, 5671 too long. Chunking...
+2024-10-05 10:47:46,681 - __main__ - INFO - Translating item: 10. Complete
+2024-10-05 10:47:46,681 - __main__ - INFO - Translating item: 11
+2024-10-05 10:48:08,874 - __main__ - INFO - Translating item: 11. Complete
+2024-10-05 10:48:08,875 - __main__ - INFO - Translating item: 12
+2024-10-05 10:48:34,473 - __main__ - INFO - Translating item: 12. Complete
+2024-10-05 10:48:34,473 - __main__ - INFO - Translating item: 13
+2024-10-05 10:48:57,261 - __main__ - INFO - Translating item: 13. Complete
+2024-10-05 10:48:57,261 - __main__ - INFO - Translating item: 14
+2024-10-05 10:49:20,818 - __main__ - INFO - Translating item: 14. Complete
+2024-10-05 10:49:20,818 - __main__ - INFO - Translating item: 15
+2024-10-05 10:49:41,101 - __main__ - INFO - Translating item: 15. Complete
+2024-10-05 10:49:41,101 - __main__ - INFO - Translating item: 16
+2024-10-05 10:50:08,001 - __main__ - INFO - Translating item: 16. Complete
+2024-10-05 10:50:08,001 - __main__ - INFO - Translating item: 17
+2024-10-05 10:50:31,199 - __main__ - INFO - Translating item: 17. Complete
+2024-10-05 10:50:31,199 - __main__ - INFO - Translating item: 18
+2024-10-05 10:50:52,970 - __main__ - INFO - Translating item: 18. Complete
+2024-10-05 10:50:52,970 - __main__ - INFO - Translating item: 19
+2024-10-05 10:51:10,091 - __main__ - INFO - Translating item: 19. Complete
+2024-10-05 10:51:10,091 - __main__ - INFO - Translating item: 20
+2024-10-05 10:51:31,462 - __main__ - INFO - Translating item: 20. Complete
+2024-10-05 10:51:31,463 - __main__ - INFO - Translating item: 21
+2024-10-05 10:51:51,275 - __main__ - INFO - Translating item: 21. Complete
+2024-10-05 10:51:51,275 - __main__ - INFO - Translating item: 22
+2024-10-05 10:52:11,861 - __main__ - INFO - Translating item: 22. Complete
+2024-10-05 10:52:11,871 - __main__ - INFO - Translating item: 23
+2024-10-05 11:05:11,880 - __main__ - INFO - Running in --headless mode
+2024-10-05 11:06:51,281 - __main__ - INFO - Running in debug mode
+2024-10-05 11:07:21,456 - __main__ - INFO - Translating item: 0
+2024-10-05 11:07:32,502 - __main__ - ERROR - Error encountered: Message: 
 Stacktrace:
-	GetHandleVerifier [0x00007FF6D6EAB645+29573]
-	(No symbol) [0x00007FF6D6E20470]
-	(No symbol) [0x00007FF6D6CDB6EA]
-	(No symbol) [0x00007FF6D6D2F815]
-	(No symbol) [0x00007FF6D6D2FA6C]
-	(No symbol) [0x00007FF6D6D7B917]
-	(No symbol) [0x00007FF6D6D5733F]
-	(No symbol) [0x00007FF6D6D786BC]
-	(No symbol) [0x00007FF6D6D570A3]
-	(No symbol) [0x00007FF6D6D212DF]
-	(No symbol) [0x00007FF6D6D22441]
-	GetHandleVerifier [0x00007FF6D71DC58D+3375821]
-	GetHandleVerifier [0x00007FF6D7227987+3684039]
-	GetHandleVerifier [0x00007FF6D721CDAB+3640043]
-	GetHandleVerifier [0x00007FF6D6F6B7C6+816390]
-	(No symbol) [0x00007FF6D6E2B77F]
-	(No symbol) [0x00007FF6D6E275A4]
-	(No symbol) [0x00007FF6D6E27740]
-	(No symbol) [0x00007FF6D6E1659F]
+	GetHandleVerifier [0x00007FF775CBB645+29573]
+	(No symbol) [0x00007FF775C30470]
+	(No symbol) [0x00007FF775AEB6EA]
+	(No symbol) [0x00007FF775B3F815]
+	(No symbol) [0x00007FF775B3FA6C]
+	(No symbol) [0x00007FF775B8B917]
+	(No symbol) [0x00007FF775B6733F]
+	(No symbol) [0x00007FF775B886BC]
+	(No symbol) [0x00007FF775B670A3]
+	(No symbol) [0x00007FF775B312DF]
+	(No symbol) [0x00007FF775B32441]
+	GetHandleVerifier [0x00007FF775FEC58D+3375821]
+	GetHandleVerifier [0x00007FF776037987+3684039]
+	GetHandleVerifier [0x00007FF77602CDAB+3640043]
+	GetHandleVerifier [0x00007FF775D7B7C6+816390]
+	(No symbol) [0x00007FF775C3B77F]
+	(No symbol) [0x00007FF775C375A4]
+	(No symbol) [0x00007FF775C37740]
+	(No symbol) [0x00007FF775C2659F]
 	BaseThreadInitThunk [0x00007FFCEA15257D+29]
 	RtlUserThreadStart [0x00007FFCEAACAF28+40]
 
-2024-10-02 15:07:38,933 - __main__ - ERROR - An error occurred: Message: stale element reference: stale element not found in the current frame
-  (Session info: chrome=129.0.6668.60); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+2024-10-05 11:07:53,717 - __main__ - ERROR - Error encountered: Message: 
 Stacktrace:
-	GetHandleVerifier [0x00007FF6D6EAB645+29573]
-	(No symbol) [0x00007FF6D6E20470]
-	(No symbol) [0x00007FF6D6CDB6EA]
-	(No symbol) [0x00007FF6D6CE22BE]
-	(No symbol) [0x00007FF6D6CE4637]
-	(No symbol) [0x00007FF6D6CE46F0]
-	(No symbol) [0x00007FF6D6D2959B]
-	(No symbol) [0x00007FF6D6D572FA]
-	(No symbol) [0x00007FF6D6D22FF6]
-	(No symbol) [0x00007FF6D6D57510]
-	(No symbol) [0x00007FF6D6D786BC]
-	(No symbol) [0x00007FF6D6D570A3]
-	(No symbol) [0x00007FF6D6D212DF]
-	(No symbol) [0x00007FF6D6D22441]
-	GetHandleVerifier [0x00007FF6D71DC58D+3375821]
-	GetHandleVerifier [0x00007FF6D7227987+3684039]
-	GetHandleVerifier [0x00007FF6D721CDAB+3640043]
-	GetHandleVerifier [0x00007FF6D6F6B7C6+816390]
-	(No symbol) [0x00007FF6D6E2B77F]
-	(No symbol) [0x00007FF6D6E275A4]
-	(No symbol) [0x00007FF6D6E27740]
-	(No symbol) [0x00007FF6D6E1659F]
+	GetHandleVerifier [0x00007FF775CBB645+29573]
+	(No symbol) [0x00007FF775C30470]
+	(No symbol) [0x00007FF775AEB6EA]
+	(No symbol) [0x00007FF775B3F815]
+	(No symbol) [0x00007FF775B3FA6C]
+	(No symbol) [0x00007FF775B8B917]
+	(No symbol) [0x00007FF775B6733F]
+	(No symbol) [0x00007FF775B886BC]
+	(No symbol) [0x00007FF775B670A3]
+	(No symbol) [0x00007FF775B312DF]
+	(No symbol) [0x00007FF775B32441]
+	GetHandleVerifier [0x00007FF775FEC58D+3375821]
+	GetHandleVerifier [0x00007FF776037987+3684039]
+	GetHandleVerifier [0x00007FF77602CDAB+3640043]
+	GetHandleVerifier [0x00007FF775D7B7C6+816390]
+	(No symbol) [0x00007FF775C3B77F]
+	(No symbol) [0x00007FF775C375A4]
+	(No symbol) [0x00007FF775C37740]
+	(No symbol) [0x00007FF775C2659F]
 	BaseThreadInitThunk [0x00007FFCEA15257D+29]
 	RtlUserThreadStart [0x00007FFCEAACAF28+40]
 
+2024-10-05 11:08:02,320 - __main__ - INFO - Translating item: 0. Complete
+2024-10-05 11:08:02,322 - __main__ - INFO - Translating item: 1
+2024-10-05 11:08:20,434 - __main__ - INFO - Translating item: 1. Complete
+2024-10-05 11:08:20,434 - __main__ - INFO - Translating item: 2
+2024-10-05 11:08:40,346 - __main__ - INFO - Translating item: 2. Complete
+2024-10-05 11:08:40,347 - __main__ - INFO - Translating item: 3
+2024-10-05 11:09:00,656 - __main__ - INFO - Translating item: 3. Complete
+2024-10-05 11:09:00,657 - __main__ - INFO - Translating item: 4
+2024-10-05 11:09:28,719 - __main__ - INFO - Translating item: 4. Complete
+2024-10-05 11:09:28,719 - __main__ - INFO - Translating item: 5
+2024-10-05 11:09:52,286 - __main__ - INFO - Translating item: 5. Complete
+2024-10-05 11:09:52,286 - __main__ - INFO - Translating item: 6
+2024-10-05 11:10:13,407 - __main__ - INFO - Translating item: 6. Complete
+2024-10-05 11:10:13,409 - __main__ - INFO - Translating item: 7
+2024-10-05 11:10:35,750 - __main__ - INFO - Translating item: 7. Complete
+2024-10-05 11:10:35,751 - __main__ - INFO - Translating item: 8
