@@ -37,6 +37,7 @@ logger.addHandler(ch)
 logger.addHandler(fh)
 
 load_dotenv()
+
 BATCH_SIZE = int(os.getenv('BATCH_SIZE'))
 NUMBER_OF_ITEMS = int(os.getenv('NUMBER_OF_ITEMS'))
 FILENAME = os.getenv('FILENAME')
@@ -59,12 +60,24 @@ else:
 class NoTranslationResult(Exception):
     ...
 
-def upload_to_bucket(data, bucket, key):
+def upload_to_bucket(content, bucket, key):
     try:
-        s3_client.put_object(Body=data, Bucket=bucket, Key=key)
+        s3_client.put_object(Body=content, Bucket=bucket, Key=key)
         logger.info(f'Successfully uploaded {key} to {bucket}')
     except ClientError as e:
-        logger.error(f'Error uploading {key} to {bucket}: {e}')
+        logger.error(f'Error uploading {key} to {bucket}: {e}\nAttempting to create bucket')
+        create_bucket(bucket, REGION)
+
+def create_bucket(bucket_name, region):
+    try:
+        s3_client = boto3.client('s3', region_name=region)
+        s3_client.create_bucket(
+            Bucket=bucket_name,
+            CreateBucketConfiguration={'LocationConstraint': region}
+        )
+        logger.info(f'Bucket {bucket_name} created successfully.')
+    except ClientError as e:
+        logger.info(f'Error creating bucket: {e}')
 
 @retry(
         retry=retry_if_exception((TimeoutException, ConnectionError, WebDriverException)),
@@ -83,7 +96,7 @@ def wait_for_element(browser, by, element_id, timeout=5, check_visibility=False)
         return False
 
 @sleep_and_retry
-@limits(calls=1, period=random.uniform(2, 5))
+@limits(calls=1, period=random.uniform(7, 10))
 def rate_limited_translate(text: str, in_browser: webdriver.Chrome, max_retries: int=3) -> str:
     for attempt in range(max_retries):
         try:
@@ -97,31 +110,29 @@ def rate_limited_translate(text: str, in_browser: webdriver.Chrome, max_retries:
                 raise
     return translate(text, in_browser)
 
-def translate(text: str, in_browser: webdriver.Chrome) -> str:
-    time.sleep(random.uniform(5, 8))
-    text_area = wait_for_element(in_browser, By.CSS_SELECTOR, 'textarea.er8xn', timeout=random.uniform(1, 10))
+def translate(text: str, browser: webdriver.Chrome) -> str:
+    text_area = wait_for_element(browser, By.CSS_SELECTOR, 'textarea.er8xn')
     if text_area:
         text_area.clear()
         text_area.send_keys(text)
 
-        time.sleep(random.uniform(5, 8))
-        result = wait_for_element(in_browser, By.CSS_SELECTOR, 'span.ryNqvb', timeout=random.uniform(1, 10))
+        result = wait_for_element(browser, By.CSS_SELECTOR, 'span.ryNqvb')
         if result and result.text:
             return result.text
     return 'Text area not found'
 
 def chunk(text: str, max_length: int = 5_000):
     chunks = []
-    current_chunk = ""
-    for sentence in text.split(". "):
-        if len(current_chunk) + len(sentence) < max_length-1:
-            current_chunk += sentence + ". "
+    chunk = str()
+    for sentence in text.split('. '):
+        if len(chunk) + len(sentence) < max_length-1:
+            chunk += sentence + '. '
         else:
-            chunks.append(current_chunk.strip())
-            current_chunk = sentence + ". "
+            chunks.append(chunk.strip())
+            chunk = sentence + '. '
     
-    if current_chunk:
-        chunks.append(current_chunk.strip())
+    if chunk:
+        chunks.append(chunk.strip())
     return chunks
 
 def translate_chunked(text: str, browser):
@@ -130,7 +141,7 @@ def translate_chunked(text: str, browser):
     else:
         logger.info(f'Text, {len(text)} too long. Chunking...')
         translated_chunks = [rate_limited_translate(chunk, browser) for chunk in chunk(text)]
-        return " ". join(translated_chunks)
+        return ' '. join(translated_chunks)
 
 def translate_item(e, browser):
     e['sh_instruction'] = translate_chunked(e['instruction'], browser)
@@ -138,20 +149,31 @@ def translate_item(e, browser):
     e['sh_response'] = translate_chunked(e['response'], browser)
     return e
 
-def save_data(batch, n):
-    if len(batch) == int(BATCH_SIZE) or n == int(NUMBER_OF_ITEMS):
-        key = f'DATA/{n: 07}.json'
-        upload_to_bucket(batch, BUCKET, key)
-        try:
-            with open('data.json', 'r') as f:
-                existing_data = json.load(f)
-        except FileNotFoundError:
-            existing_data = []
-        existing_data.extend(batch)
+def checkpoint_reached(batch, n):
+    return len(batch) == int(BATCH_SIZE) or n == int(NUMBER_OF_ITEMS)
 
-        with open('data.json', 'w') as f:
-            json.dump(existing_data, f, indent=4)
-        
+def load_data(batch):
+    try:
+        with open('data.json', 'r') as f:
+            existing_data = json.load(f)
+    except FileNotFoundError:
+        existing_data = []
+    existing_data.extend(batch)
+    return existing_data
+
+def dump_existing_data(data):
+    with open('data.json', 'w') as f:
+        json.dump(data, f, indent=4)
+
+def upload_data(n):
+    key = f'DATA/{n: 07}.json'
+    with open('data.json', 'rb') as f:
+        upload_to_bucket(f, BUCKET, key)
+
+def save_data(batch, n):
+    if checkpoint_reached(batch, n):
+        dump_existing_data(load_data(batch))
+        upload_data(n)
         batch = []
     return batch
 
@@ -162,7 +184,7 @@ def load_checkpoint():
     except FileNotFoundError:
         return 0
 
-def translate_data_in(browser):
+def translate_data_from(browser):
     ckpt = load_checkpoint()
     batch = []
     for n, line in enumerate(open(FILENAME, 'r'), ckpt):
@@ -171,7 +193,7 @@ def translate_data_in(browser):
         logger.info(f'Translating item: {n}. Complete')
         batch = save_data(batch, n)
 
-def initialize():
+def initialize_browser():
     logger.debug('Initializing browser')
     browser_path = Path(__file__).resolve().parent / 'cd' / 'chromedriver.exe'
     service = Service(browser_path)
@@ -180,12 +202,12 @@ def initialize():
     time.sleep(random.uniform(5, 10))
     return browser
 
+
 def main():
-    browser = initialize()
     try:
-        translate_data_in(browser)
+        translate_data_from(initialize_browser())
     except Exception as e:
-        logger.error(f'An error occurred: {e}')
+        logger.error(f'An error occurred in Main: {e}')
 
 
 if __name__ == '__main__':
