@@ -85,7 +85,7 @@ def create_bucket(bucket_name, region):
         wait=wait_random_exponential(multiplier=1, min=3, max=10) + wait_random(0, 2),
         before_sleep=lambda retry_state: logger.warning(f'Retrying in {retry_state.next_action.sleep} seconds')
 )
-def wait_for_element(browser, by, element_id, timeout=5, check_visibility=False):
+def wait_for_element(browser, by, element_id, timeout=5, check_visibility=True):
     try:
         condition = EC.visibility_of_element_located if check_visibility else EC.presence_of_element_located
         element = condition((by, element_id))
@@ -116,6 +116,7 @@ def translate(text: str, browser: webdriver.Chrome) -> str:
         text_area.clear()
         text_area.send_keys(text)
 
+        time.sleep(random.uniform(5, 7))
         result = wait_for_element(browser, By.CSS_SELECTOR, 'span.ryNqvb')
         if result and result.text:
             return result.text
@@ -123,7 +124,7 @@ def translate(text: str, browser: webdriver.Chrome) -> str:
 
 def chunk(text: str, max_length: int = 5_000):
     chunks = []
-    chunk = str()
+    chunk = ''
     for sentence in text.split('. '):
         if len(chunk) + len(sentence) < max_length-1:
             chunk += sentence + '. '
@@ -136,17 +137,25 @@ def chunk(text: str, max_length: int = 5_000):
     return chunks
 
 def translate_chunked(text: str, browser):
+    time.sleep(random.uniform(2, 3))
     if len(text) < 5_000:
+        if len(text) == 0:
+            return text
         return rate_limited_translate(text, browser)
     else:
-        logger.info(f'Text, {len(text)} too long. Chunking...')
+        logger.info(f'Text, {len(text)} too long. Chunking ...')
         translated_chunks = [rate_limited_translate(chunk, browser) for chunk in chunk(text)]
         return ' '. join(translated_chunks)
 
 def translate_item(e, browser):
-    e['sh_instruction'] = translate_chunked(e['instruction'], browser)
-    e['sh_context'] = translate_chunked(e['context'], browser)
-    e['sh_response'] = translate_chunked(e['response'], browser)
+    sh_instruction = translate_chunked(e['instruction'], browser)
+    sh_context = translate_chunked(e['context'], browser)
+    sh_response = translate_chunked(e['response'], browser)
+
+    e['sh_instruction'] = sh_instruction
+    e['sh_context'] = sh_context
+    e['sh_response'] = sh_response
+
     return e
 
 def checkpoint_reached(batch, n):
@@ -173,8 +182,8 @@ def upload_data(n):
 def save_data(batch, n):
     if checkpoint_reached(batch, n):
         dump_existing_data(load_data(batch))
-        upload_data(n)
         batch = []
+        update_checkpoint(n)
     return batch
 
 def load_checkpoint():
@@ -184,6 +193,10 @@ def load_checkpoint():
     except FileNotFoundError:
         return 0
 
+def update_checkpoint(n):
+    with open('checkpoint.json', 'w') as f:
+        json.dump({'last_checkpoint': n}, f)
+
 def translate_data_from(browser):
     ckpt = load_checkpoint()
     batch = []
@@ -192,6 +205,7 @@ def translate_data_from(browser):
         batch.append(translate_item(json.loads(line), browser))
         logger.info(f'Translating item: {n}. Complete')
         batch = save_data(batch, n)
+        update_checkpoint(n)
 
 def initialize_browser():
     logger.debug('Initializing browser')

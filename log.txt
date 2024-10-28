@@ -1,609 +1,77 @@
-2024-10-19 16:19:57,303 - __main__ - INFO - Running in debug mode
-2024-10-19 16:20:07,961 - __main__ - INFO - Translating item: 0
-2024-10-19 16:20:23,590 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 16:20:23,591 - __main__ - INFO - Translating item: 1
-2024-10-19 16:20:46,335 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 16:20:46,337 - __main__ - INFO - Translating item: 2
-2024-10-19 16:21:09,478 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 16:21:09,479 - __main__ - INFO - Translating item: 3
-2024-10-19 16:21:32,327 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 16:21:32,327 - __main__ - INFO - Translating item: 4
-2024-10-19 16:21:55,364 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 16:21:55,367 - __main__ - ERROR - An error occurred: Parameter validation failed:
-Invalid type for parameter Body, value: [{'instruction': 'When did Virgin Australia start operating?', 'context': "Virgin Australia, the trading name of Virgin Australia Airlines Pty Ltd, is an Australian-based airline. It is the largest airline by fleet size to use the Virgin brand. It commenced services on 31 August 2000 as Virgin Blue, with two aircraft on a single route. It suddenly found itself as a major airline in Australia's domestic market after the collapse of Ansett Australia in September 2001. The airline has since grown to directly serve 32 cities in Australia, from hubs in Brisbane, Melbourne and Sydney.", 'response': 'Virgin Australia commenced services on 31 August 2000 as Virgin Blue, with two aircraft on a single route.', 'category': 'closed_qa', 'sh_instruction': 'Australia yeMhandara yakatanga riinhi?', 'sh_context': 'Australia yeMhandara yakatanga riinhi?', 'sh_response': 'Mhandara Australia, zita rekutengesa reMhandara Airlines Airlines Pty Ltd, inzvimbo yeAustralia-yakavakirwa ndege.'}, {'instruction': 'Which is a species of fish? Tope or Rope', 'context': '', 'response': 'Tope', 'category': 'classification', 'sh_instruction': 'Mhandara Australia yakatanga masevhisi musi wa 31 Nyamavhuvhu 2000 semhandara yebhuruu, ine ndege mbiri pane imwe nzira.', 'sh_context': 'Ndeapi marudzi ehove?', 'sh_response': 'Ndeapi marudzi ehove?'}, {'instruction': 'Why can camels survive for long without water?', 'context': '', 'response': 'Camels use the fat in their humps to keep them filled with energy and hydration for long periods of time.', 'category': 'open_qa', 'sh_instruction': 'Tope', 'sh_context': 'Nei makamera achigona kurarama kwenguva yakareba pasina mvura?', 'sh_response': 'Nei makamera achigona kurarama kwenguva yakareba pasina mvura?'}, {'instruction': "Alice's parents have three daughters: Amy, Jessy, and what’s the name of the third daughter?", 'context': '', 'response': 'The name of the third daughter is Alice', 'category': 'open_qa', 'sh_instruction': 'Nei makamera achigona kurarama kwenguva yakareba pasina mvura?', 'sh_context': 'Vabereki vaAyice vane vanasikana vatatu: Amy, Jessy, uye anonzi ani mwanasikana wechitatu?', 'sh_response': 'Vabereki vaAyice vane vanasikana vatatu: Amy, Jessy, uye anonzi ani mwanasikana wechitatu?'}, {'instruction': 'When was Tomoaki Komorida born?', 'context': 'Komorida was born in Kumamoto Prefecture on July 10, 1981. After graduating from high school, he joined the J1 League club Avispa Fukuoka in 2000. Although he debuted as a midfielder in 2001, he did not play much and the club was relegated to the J2 League at the end of the 2001 season. In 2002, he moved to the J2 club Oita Trinita. He became a regular player as a defensive midfielder and the club won the championship in 2002 and was promoted in 2003. He played many matches until 2005. In September 2005, he moved to the J2 club Montedio Yamagata. In 2006, he moved to the J2 club Vissel Kobe. Although he became a regular player as a defensive midfielder, his gradually was played less during the summer. In 2007, he moved to the Japan Football League club Rosso Kumamoto (later Roasso Kumamoto) based in his local region. He played as a regular player and the club was promoted to J2 in 2008. Although he did not play as much, he still played in many matches. In 2010, he moved to Indonesia and joined Persela Lamongan. In July 2010, he returned to Japan and joined the J2 club Giravanz Kitakyushu. He played often as a defensive midfielder and center back until 2012 when he retired.', 'response': 'Tomoaki Komorida was born on July 10,1981.', 'category': 'closed_qa', 'sh_instruction': 'Zita remwanasikana wechitatu uyu alice', 'sh_context': 'Tomoaki KOMorida akazvarwa riini?', 'sh_response': 'Komorida akaberekerwa muMamoto fungidziro musi waChikunguru 10, 1981'}], type: <class 'list'>, valid types: <class 'bytes'>, <class 'bytearray'>, file-like object
-2024-10-19 16:30:56,556 - __main__ - INFO - Running in debug mode
-2024-10-19 16:31:09,522 - __main__ - INFO - Translating item: 0
-2024-10-19 16:31:29,258 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 16:31:29,259 - __main__ - INFO - Translating item: 1
-2024-10-19 16:31:58,126 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 16:31:58,126 - __main__ - INFO - Translating item: 2
-2024-10-19 16:32:27,419 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 16:32:27,420 - __main__ - INFO - Translating item: 3
-2024-10-19 16:32:56,445 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 16:32:56,446 - __main__ - INFO - Translating item: 4
-2024-10-19 16:33:25,603 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 16:33:25,606 - __main__ - ERROR - An error occurred: not readable
-2024-10-19 16:40:22,957 - __main__ - INFO - Running in debug mode
-2024-10-19 16:40:38,204 - __main__ - INFO - Translating item: 0
-2024-10-19 16:40:55,675 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 16:40:55,676 - __main__ - INFO - Translating item: 1
-2024-10-19 16:41:21,127 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 16:41:21,128 - __main__ - INFO - Translating item: 2
-2024-10-19 16:41:47,012 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 16:41:47,012 - __main__ - INFO - Translating item: 3
-2024-10-19 16:42:12,592 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 16:42:12,592 - __main__ - INFO - Translating item: 4
-2024-10-19 16:42:38,305 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 16:42:39,633 - __main__ - ERROR - Error uploading DATA/ 000004.json to dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-2024-10-19 16:42:39,633 - __main__ - INFO - Translating item: 5
-2024-10-19 16:43:04,069 - __main__ - INFO - Translating item: 5. Complete
-2024-10-19 16:43:04,070 - __main__ - INFO - Translating item: 6
-2024-10-19 16:46:29,163 - __main__ - INFO - Running in debug mode
-2024-10-19 16:46:41,114 - __main__ - INFO - Translating item: 0
-2024-10-19 16:46:46,674 - __main__ - ERROR - Error encountered: Message: 
+2024-10-28 09:38:19,385 - __main__ - INFO - Running in debug mode
+2024-10-28 09:38:36,890 - __main__ - INFO - Translating item: 3
+2024-10-28 09:39:06,026 - __main__ - INFO - Translating item: 3. Complete
+2024-10-28 09:39:06,029 - __main__ - INFO - Translating item: 4
+2024-10-28 09:39:26,322 - __main__ - INFO - Translating item: 4. Complete
+2024-10-28 09:39:26,327 - __main__ - INFO - Translating item: 5
+2024-10-28 09:39:47,035 - __main__ - INFO - Translating item: 5. Complete
+2024-10-28 09:39:47,038 - __main__ - INFO - Translating item: 6
+2024-10-28 09:40:09,533 - __main__ - INFO - Translating item: 6. Complete
+2024-10-28 09:40:09,537 - __main__ - INFO - Translating item: 7
+2024-10-28 09:40:42,862 - __main__ - INFO - Translating item: 7. Complete
+2024-10-28 09:40:42,866 - __main__ - INFO - Translating item: 8
+2024-10-28 09:41:16,309 - __main__ - INFO - Translating item: 8. Complete
+2024-10-28 09:41:16,334 - __main__ - INFO - Translating item: 9
+2024-10-28 09:41:52,879 - __main__ - INFO - Translating item: 9. Complete
+2024-10-28 09:41:52,882 - __main__ - INFO - Translating item: 10
+2024-10-28 09:42:13,644 - __main__ - INFO - Translating item: 10. Complete
+2024-10-28 09:42:13,663 - __main__ - INFO - Translating item: 11
+2024-10-28 09:42:34,826 - __main__ - INFO - Translating item: 11. Complete
+2024-10-28 09:42:34,830 - __main__ - INFO - Translating item: 12
+2024-10-28 09:43:23,494 - __main__ - INFO - Translating item: 12. Complete
+2024-10-28 09:43:23,511 - __main__ - INFO - Translating item: 13
+2024-10-28 09:43:50,563 - __main__ - INFO - Text, 5671 too long. Chunking ...
+2024-10-28 09:44:51,944 - __main__ - INFO - Translating item: 13. Complete
+2024-10-28 09:44:51,947 - __main__ - INFO - Translating item: 14
+2024-10-28 09:45:24,790 - __main__ - INFO - Translating item: 14. Complete
+2024-10-28 09:45:24,799 - __main__ - INFO - Translating item: 15
+2024-10-28 09:45:51,808 - __main__ - ERROR - Error encountered: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=130.0.6723.70)
 Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
+	GetHandleVerifier [0x00007FF66F6BB645+29573]
+	(No symbol) [0x00007FF66F630470]
+	(No symbol) [0x00007FF66F4EB6EA]
+	(No symbol) [0x00007FF66F4BFCD5]
+	(No symbol) [0x00007FF66F56EF67]
+	(No symbol) [0x00007FF66F587FC1]
+	(No symbol) [0x00007FF66F5670A3]
+	(No symbol) [0x00007FF66F5312DF]
+	(No symbol) [0x00007FF66F532441]
+	GetHandleVerifier [0x00007FF66F9EC58D+3375821]
+	GetHandleVerifier [0x00007FF66FA37987+3684039]
+	GetHandleVerifier [0x00007FF66FA2CDAB+3640043]
+	GetHandleVerifier [0x00007FF66F77B7C6+816390]
+	(No symbol) [0x00007FF66F63B77F]
+	(No symbol) [0x00007FF66F6375A4]
+	(No symbol) [0x00007FF66F637740]
+	(No symbol) [0x00007FF66F62659F]
+	BaseThreadInitThunk [0x00007FF8E72A257D+29]
+	RtlUserThreadStart [0x00007FF8E818AF08+40]
 
-2024-10-19 16:46:56,503 - __main__ - ERROR - Error encountered: Message: 
+2024-10-28 09:45:54,197 - __main__ - ERROR - Error encountered: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=130.0.6723.70)
 Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
+	GetHandleVerifier [0x00007FF66F6BB645+29573]
+	(No symbol) [0x00007FF66F630470]
+	(No symbol) [0x00007FF66F4EB6EA]
+	(No symbol) [0x00007FF66F4BFCD5]
+	(No symbol) [0x00007FF66F56EF67]
+	(No symbol) [0x00007FF66F587FC1]
+	(No symbol) [0x00007FF66F5670A3]
+	(No symbol) [0x00007FF66F5312DF]
+	(No symbol) [0x00007FF66F532441]
+	GetHandleVerifier [0x00007FF66F9EC58D+3375821]
+	GetHandleVerifier [0x00007FF66FA37987+3684039]
+	GetHandleVerifier [0x00007FF66FA2CDAB+3640043]
+	GetHandleVerifier [0x00007FF66F77B7C6+816390]
+	(No symbol) [0x00007FF66F63B77F]
+	(No symbol) [0x00007FF66F6375A4]
+	(No symbol) [0x00007FF66F637740]
+	(No symbol) [0x00007FF66F62659F]
+	BaseThreadInitThunk [0x00007FF8E72A257D+29]
+	RtlUserThreadStart [0x00007FF8E818AF08+40]
 
-2024-10-19 16:46:57,166 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 16:46:57,166 - __main__ - INFO - Translating item: 1
-2024-10-19 16:47:19,113 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 16:47:19,114 - __main__ - INFO - Translating item: 2
-2024-10-19 16:47:41,972 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 16:47:41,972 - __main__ - INFO - Translating item: 3
-2024-10-19 16:48:04,157 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 16:48:04,158 - __main__ - INFO - Translating item: 4
-2024-10-19 16:48:26,689 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 16:48:28,186 - __main__ - ERROR - Error uploading DATA/ 000004.json to dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 16:48:29,403 - __main__ - INFO - Translating item: 5
-2024-10-19 16:48:49,387 - __main__ - INFO - Translating item: 5. Complete
-2024-10-19 16:48:49,387 - __main__ - INFO - Translating item: 6
-2024-10-19 16:49:14,069 - __main__ - INFO - Translating item: 6. Complete
-2024-10-19 16:49:14,070 - __main__ - INFO - Translating item: 7
-2024-10-19 16:52:04,041 - __main__ - INFO - Running in debug mode
-2024-10-19 16:52:21,624 - __main__ - INFO - Translating item: 0
-2024-10-19 16:52:27,277 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:52:36,994 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:52:42,828 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:52:42,832 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 16:52:42,833 - __main__ - INFO - Translating item: 1
-2024-10-19 16:52:50,056 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:52:57,521 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:53:05,045 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:53:05,049 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 16:53:05,050 - __main__ - INFO - Translating item: 2
-2024-10-19 16:53:12,980 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 16:53:22,913 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 16:53:22,913 - __main__ - INFO - Translating item: 3
-2024-10-19 16:53:45,746 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 16:53:45,747 - __main__ - INFO - Translating item: 4
-2024-10-19 16:54:08,654 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 16:54:10,593 - __main__ - ERROR - Error uploading DATA/ 000004.json to dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 16:54:12,338 - __main__ - INFO - Translating item: 5
-2024-10-19 16:54:31,762 - __main__ - INFO - Translating item: 5. Complete
-2024-10-19 16:54:31,763 - __main__ - INFO - Translating item: 6
-2024-10-19 16:54:56,766 - __main__ - INFO - Translating item: 6. Complete
-2024-10-19 16:54:56,767 - __main__ - INFO - Translating item: 7
-2024-10-19 16:55:16,957 - __main__ - INFO - Translating item: 7. Complete
-2024-10-19 16:55:16,958 - __main__ - INFO - Translating item: 8
-2024-10-19 16:55:39,926 - __main__ - INFO - Translating item: 8. Complete
-2024-10-19 16:55:39,927 - __main__ - INFO - Translating item: 9
-2024-10-19 16:56:09,118 - __main__ - INFO - Translating item: 9. Complete
-2024-10-19 16:56:10,629 - __main__ - ERROR - Error uploading DATA/ 000009.json to dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 16:56:12,313 - __main__ - INFO - Translating item: 10
-2024-10-19 16:56:23,759 - __main__ - INFO - Text, 5671 too long. Chunking...
-2024-10-19 16:57:16,586 - __main__ - INFO - Translating item: 10. Complete
-2024-10-19 16:57:16,587 - __main__ - INFO - Translating item: 11
-2024-10-19 16:57:35,969 - __main__ - INFO - Translating item: 11. Complete
-2024-10-19 16:57:35,970 - __main__ - INFO - Translating item: 12
-2024-10-19 16:57:58,494 - __main__ - INFO - Translating item: 12. Complete
-2024-10-19 16:57:58,494 - __main__ - INFO - Translating item: 13
-2024-10-19 16:58:22,925 - __main__ - INFO - Translating item: 13. Complete
-2024-10-19 16:58:22,925 - __main__ - INFO - Translating item: 14
-2024-10-19 16:58:45,917 - __main__ - INFO - Translating item: 14. Complete
-2024-10-19 16:58:47,086 - __main__ - ERROR - Error uploading DATA/ 000014.json to dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 16:58:48,157 - __main__ - INFO - Translating item: 15
-2024-10-19 16:59:07,215 - __main__ - INFO - Translating item: 15. Complete
-2024-10-19 16:59:07,215 - __main__ - INFO - Translating item: 16
-2024-10-19 16:59:30,111 - __main__ - INFO - Translating item: 16. Complete
-2024-10-19 16:59:30,111 - __main__ - INFO - Translating item: 17
-2024-10-19 16:59:53,496 - __main__ - INFO - Translating item: 17. Complete
-2024-10-19 16:59:53,496 - __main__ - INFO - Translating item: 18
-2024-10-19 17:00:16,326 - __main__ - INFO - Translating item: 18. Complete
-2024-10-19 17:00:16,326 - __main__ - INFO - Translating item: 19
-2024-10-19 17:00:38,116 - __main__ - INFO - Translating item: 19. Complete
-2024-10-19 17:00:39,668 - __main__ - ERROR - Error uploading DATA/ 000019.json to dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 17:00:41,020 - __main__ - INFO - Translating item: 20
-2024-10-19 17:01:01,067 - __main__ - INFO - Translating item: 20. Complete
-2024-10-19 17:01:01,068 - __main__ - INFO - Translating item: 21
-2024-10-19 17:01:23,963 - __main__ - INFO - Translating item: 21. Complete
-2024-10-19 17:01:23,964 - __main__ - INFO - Translating item: 22
-2024-10-19 17:07:46,269 - __main__ - INFO - Running in debug mode
-2024-10-19 17:07:59,962 - __main__ - INFO - Translating item: 0
-2024-10-19 17:08:05,410 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:15,215 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:21,082 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:21,087 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 17:08:21,087 - __main__ - INFO - Translating item: 1
-2024-10-19 17:08:28,205 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:35,498 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:42,986 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:42,992 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 17:08:42,992 - __main__ - INFO - Translating item: 2
-2024-10-19 17:08:50,708 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:08:57,958 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:09:05,921 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:09:05,923 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 17:09:05,923 - __main__ - INFO - Translating item: 3
-2024-10-19 17:09:13,468 - __main__ - ERROR - Error encountered: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B695B645+29573]
-	(No symbol) [0x00007FF6B68D0470]
-	(No symbol) [0x00007FF6B678B6EA]
-	(No symbol) [0x00007FF6B67DF815]
-	(No symbol) [0x00007FF6B67DFA6C]
-	(No symbol) [0x00007FF6B682B917]
-	(No symbol) [0x00007FF6B680733F]
-	(No symbol) [0x00007FF6B68286BC]
-	(No symbol) [0x00007FF6B68070A3]
-	(No symbol) [0x00007FF6B67D12DF]
-	(No symbol) [0x00007FF6B67D2441]
-	GetHandleVerifier [0x00007FF6B6C8C58D+3375821]
-	GetHandleVerifier [0x00007FF6B6CD7987+3684039]
-	GetHandleVerifier [0x00007FF6B6CCCDAB+3640043]
-	GetHandleVerifier [0x00007FF6B6A1B7C6+816390]
-	(No symbol) [0x00007FF6B68DB77F]
-	(No symbol) [0x00007FF6B68D75A4]
-	(No symbol) [0x00007FF6B68D7740]
-	(No symbol) [0x00007FF6B68C659F]
-	BaseThreadInitThunk [0x00007FFA96A9257D+29]
-	RtlUserThreadStart [0x00007FFA9828AF08+40]
-
-2024-10-19 17:09:23,082 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 17:09:23,083 - __main__ - INFO - Translating item: 4
-2024-10-19 17:09:45,643 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 17:09:45,644 - __main__ - ERROR - An error occurred in Main: load_existing_data() missing 1 required positional argument: 'batch'
-2024-10-19 17:12:03,675 - __main__ - INFO - Running in debug mode
-2024-10-19 17:12:14,422 - __main__ - INFO - Translating item: 0
-2024-10-19 17:12:29,288 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 17:12:29,289 - __main__ - INFO - Translating item: 1
-2024-10-19 17:12:50,215 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 17:12:50,218 - __main__ - ERROR - An error occurred in Main: name 'n' is not defined
-2024-10-19 17:15:10,912 - __main__ - INFO - Running in debug mode
-2024-10-19 17:15:23,814 - __main__ - INFO - Translating item: 0
-2024-10-19 17:15:42,921 - __main__ - INFO - Translating item: 0. Complete
-2024-10-19 17:15:42,921 - __main__ - INFO - Translating item: 1
-2024-10-19 17:16:10,033 - __main__ - INFO - Translating item: 1. Complete
-2024-10-19 17:16:11,667 - __main__ - ERROR - Error uploading DATA/ 000001.json to shona__dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 17:16:13,503 - __main__ - INFO - Translating item: 2
-2024-10-19 17:16:38,181 - __main__ - INFO - Translating item: 2. Complete
-2024-10-19 17:16:38,182 - __main__ - INFO - Translating item: 3
-2024-10-19 17:17:05,538 - __main__ - INFO - Translating item: 3. Complete
-2024-10-19 17:17:07,015 - __main__ - ERROR - Error uploading DATA/ 000003.json to shona__dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 17:17:08,277 - __main__ - INFO - Translating item: 4
-2024-10-19 17:17:33,314 - __main__ - INFO - Translating item: 4. Complete
-2024-10-19 17:17:33,314 - __main__ - INFO - Translating item: 5
-2024-10-19 17:18:01,249 - __main__ - INFO - Translating item: 5. Complete
-2024-10-19 17:18:02,861 - __main__ - ERROR - Error uploading DATA/ 000005.json to shona__dolly15K: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-Attempting to create bucket
-2024-10-19 17:18:04,204 - __main__ - INFO - Translating item: 6
-2024-10-19 17:18:30,984 - __main__ - INFO - Translating item: 6. Complete
-2024-10-19 17:18:30,984 - __main__ - INFO - Translating item: 7
+2024-10-28 09:45:54,203 - __main__ - INFO - Translating item: 15. Complete
+2024-10-28 09:45:54,206 - __main__ - INFO - Translating item: 16
