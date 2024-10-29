@@ -119,6 +119,7 @@ def translate(text: str, browser: webdriver.Chrome) -> str:
         time.sleep(random.uniform(5, 7))
         result = wait_for_element(browser, By.CSS_SELECTOR, 'span.ryNqvb')
         if result and result.text:
+            text_area.clear()
             return result.text
     return 'Text area not found'
 
@@ -183,7 +184,6 @@ def save_data(batch, n):
     if checkpoint_reached(batch, n):
         dump_existing_data(load_data(batch))
         batch = []
-        update_checkpoint(n)
     return batch
 
 def load_checkpoint():
